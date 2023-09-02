@@ -1,8 +1,10 @@
 
-import TestHome from "./home"
+import { Typography } from "@mui/material"
 
 export default function Home() {
   return (
-    <TestHome />
+    <Typography>
+      Hello
+    </Typography>
   )
 }
