@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import { styled } from '@mui/system';
-import { ThemeManagerContext } from "@/pages/_theme";
+import { ThemeManagerContext } from "@/theme";
 
 import MenuDrawer from "./menu";
 

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Button } from "@mui/material";
 
-import { ThemeManagerContext } from "./_theme";
+import { ThemeManagerContext } from "@/theme";
 
 function HomePage() {
   const themeManagerContext = React.useContext(ThemeManagerContext);
