@@ -11,7 +11,6 @@ import {
 } from "@mui/material";
 
 import {styled} from "@mui/system";
-import {motion} from "framer-motion";
 
 const BannerDiv = styled("div")(({theme}) => ({
   width : "100%",
