@@ -16,7 +16,7 @@ const BannerDiv = styled("div")(({theme}) => ({
   width : "100%",
   height : "55vh",
   minHeight : "400px",
-  background : theme.palette.mode === "dark" ? "linear-gradient(#313131ff, #31313100)" : "linear-gradient(#dfdfdf80, #dfdfdfff)",
+  background : theme.palette.mode === "dark" ? "linear-gradient(#313131ff, #31313144)" : "linear-gradient(#dfdfdf80, #dfdfdfff)",
   border : theme.palette.mode === "dark" ? "2px solid #ffffff20" : "2px solid #dfdfdfff",
   position : "relative",
   display : "flex",
