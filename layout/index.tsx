@@ -28,7 +28,8 @@ const Header = styled('div')(({theme}) => ({
   flexDirection : "row",
   alignItems : "center",
   justifyContent : "space-between",
-  padding : "0 0.25rem"
+  padding : "0 0.25rem",
+  marginBottom : "1rem",
 }))
 
 
@@ -78,6 +79,16 @@ const ThemeSwitch = styled(Switch)(({ theme }) => ({
     borderRadius: 20 / 2,
   },
 }));
+
+const Title = styled(Typography)(({theme}) => ({
+  letterSpacing : 5,
+  fontFamily : "Caveat",
+  textAlign : "center",
+  [theme.breakpoints.down("md")] : {
+    fontSize : "1.75rem"
+  }
+}))
+
 export function Layout(props : any) {
 
   const themeCtxManager = React.useContext(ThemeManagerContext);
@@ -92,12 +103,11 @@ export function Layout(props : any) {
           <MenuIcon />
         </IconButton>
         <Container>
-          <Typography
+          <Title
             variant="h4"
-            textAlign="center"
           >
-            Hello
-          </Typography>
+            Home 
+          </Title>
         </Container>
         <ThemeSwitch
           defaultChecked
