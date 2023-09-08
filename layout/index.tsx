@@ -100,7 +100,7 @@ const FabContainer = styled("div")(({theme}) => ({
   right : 0,
   bottom : 0,
   padding : "5px",
-  backgroundColor : "#ffffff22",
+  backgroundColor : theme.palette.mode === "dark" ? "#ffffff22" : "#31313133",
   borderTopLeftRadius : "20px",
   borderBottomLeftRadius : "20px",
   marginBottom : 10
