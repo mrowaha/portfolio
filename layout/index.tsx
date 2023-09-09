@@ -4,7 +4,6 @@ import {
   Typography,
   IconButton,
   Switch,
-  Stack,
   AppBar,
   useTheme
 } from "@mui/material";
@@ -22,8 +21,7 @@ const DynamicContact = dynamic(
 const AppContainer = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
   width : "100%",
-  paddingTop : "1rem",
-  height : "1000px",
+  paddingTop : "4rem",
 }));
 
 const Header = styled('div')(({theme}) => ({
@@ -97,16 +95,13 @@ const Title = styled(Typography)(({theme}) => ({
   }
 }))
 
-const FabContainer = styled(Stack)(({theme}) => ({
-  position : "absolute",
-  width : "fit-content",
-  right : 0,
-  bottom : 0,
-  padding : "5px",
-  backgroundColor : theme.palette.mode === "dark" ? "#ffffff22" : "#31313133",
-  borderTopLeftRadius : "20px",
-  borderBottomLeftRadius : "20px",
-  marginBottom : 10,
+const Footer = styled("footer")(({theme}) => ({
+  width : "100%",
+  display : "flex",
+  justifyContent : "center",
+  color : theme.palette.mode === "dark" ? "#fff" : theme.palette.text.primary,
+  backgroundColor: theme.palette.mode === "dark" ? "#31313180" : "#dfdfdf20",
+  borderTop : theme.palette.mode === "dark" ? "2px solid #ffffff20" : "2px solid #dfdfdfff" 
 }))
 
 
@@ -122,7 +117,10 @@ export function Layout(props : any) {
         open={menuDrawer}
         toggleDrawer={(open) => setMenuDrawer(open)}
       />
-      <AppBar position="static" sx={{
+
+      <DynamicContact />
+
+      <AppBar position="fixed" sx={{
         backgroundColor : theme.palette.background.default,
         width : "100%"
       }}>
@@ -146,9 +144,18 @@ export function Layout(props : any) {
 
       <AppContainer>
         {props.children}
+        <Footer>
+          <Typography 
+            variant="body2"
+            sx={{
+              backgroundColor : "inherit"
+            }}
+          >
+            Copyright &copy; Muhammad Rowaha 2023
+          </Typography>
+        </Footer>
       </AppContainer>
 
-      <DynamicContact />
     </>
   )
 }
