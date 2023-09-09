@@ -238,22 +238,24 @@ function LoopTitles (props : LoopTitlesProps) {
     }, props.delay)
 
     return () => clearInterval(titleInterval)
-  }, [currentTextIndex])
+  }, [currentTextIndex, props.delay, props.titles])
   
   return (
     <div ref={loopTextRef} className="loopText">
     {
-      props.titles.map(title => (
-        <Typography variant="h1" 
-          style={{
-            color : theme.palette.error.main,
-            fontFamily : "Caveat",
-            textAlign : "center"
-          }}
-        >
-          {title}                  
-        </Typography>
-      ))
+      React.Children.toArray(
+        props.titles.map(title => (
+          <Typography variant="h1" 
+            style={{
+              color : theme.palette.error.main,
+              fontFamily : "Caveat",
+              textAlign : "center"
+            }}
+          >
+            {title}                  
+          </Typography>
+        ))  
+      )
     }
   </div>
   )
