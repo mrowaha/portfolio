@@ -54,7 +54,7 @@ export default function MenuDrawer(props : MenuDrawerProps) {
 
   return (
     <Drawer
-      anchor="left"
+      anchor="top"
       open={props.open}
       onClose={() => props.toggleDrawer(false)}
     >

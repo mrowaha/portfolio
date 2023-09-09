@@ -7,7 +7,9 @@ import {
   Grid,
   Box,
   CircularProgress,
-  Typography
+  Typography,
+  Divider,
+  useTheme
 } from "@mui/material";
 
 import {styled} from "@mui/system";
@@ -64,6 +66,7 @@ const letters = ["P", "o", "r", "t", "f", "o","l","i","o"]
 
 function HomePage() {
 
+  const theme = useTheme();
   const [authorImgLoaded, setAuthorImageLoaded] = React.useState<boolean>(false);
   const [titleLetters, setTitleLetters] = React.useState<number>(-1);
   let title = "";
@@ -82,7 +85,8 @@ function HomePage() {
     <>
     <Head>
       <title>Muhammad Rowaha | Home</title>
-    </Head>
+    </Head> 
+
     <Container>
       <Grid container>
         <Grid item xs={12}>
