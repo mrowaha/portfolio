@@ -7,8 +7,12 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import WorkIcon from '@mui/icons-material/Work';
+import BuildIcon from '@mui/icons-material/Build';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 
 interface MenuDrawerProps {
   open : boolean;
@@ -19,35 +23,54 @@ interface MenuDrawerProps {
 export default function MenuDrawer(props : MenuDrawerProps) {
   const list = () => (
     <Box
-      sx={{ width: 250 }}
+      sx={{ width: "100%" }}
       role="presentation"
       onClick={() => props.toggleDrawer(false)}
       onKeyDown={() => props.toggleDrawer(false)}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <MenuBookIcon />
+            </ListItemIcon>
+            <ListItemText primary="Education"/>
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <WorkIcon />
+            </ListItemIcon>
+            <ListItemText primary="Experience"/>
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <BuildIcon />
+            </ListItemIcon>
+            <ListItemText primary="Skills"/>
+          </ListItemButton>
+        </ListItem>        <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <AccountTreeIcon />
+            </ListItemIcon>
+            <ListItemText primary="Projects"/>
+          </ListItemButton>
+        </ListItem>
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
+          <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <ContactSupportIcon />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary="Contact Me" />
             </ListItemButton>
           </ListItem>
-        ))}
       </List>
     </Box>
   );
