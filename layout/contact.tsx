@@ -4,7 +4,6 @@ import * as React from "react";
 import { createPortal } from "react-dom";
 import { 
   Fab,
-  Stack,
   Badge,
   useTheme
 } from "@mui/material";
@@ -13,20 +12,9 @@ import SvgIcon from '@mui/material/SvgIcon';
 import LaunchIcon from '@mui/icons-material/Launch';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { styled } from '@mui/system';
 
-import {motion, useMotionValue, useTransform} from "framer-motion";
+import {motion,} from "framer-motion";
 
-const FabContainer = styled(Stack)(({theme}) => ({
-  padding : "5px",
-  backgroundColor : theme.palette.mode === "dark" ? "#ffffff22" : "#31313133",
-  borderTopRightRadius : "20px",
-  borderBottomRightRadius : "20px",
-  marginBottom : 10,
-  position : "fixed",
-  left : 0,
-  bottom : 0,
-}))
 
 export default function Contact() {
 
@@ -44,7 +32,8 @@ export default function Contact() {
             top : 0,
             left : 0,
             display : "flex",
-            alignItems : "end"
+            alignItems : "end",
+            zIndex : 999
           }}
         >
           <motion.div 
@@ -52,7 +41,7 @@ export default function Contact() {
             dragConstraints={constraintsRef}          
             initial={{
               padding : "5px",
-              backgroundColor : theme.palette.mode === "dark" ? "#ffffff22" : "#31313133",
+              backgroundColor : theme.palette.mode === "dark" ? "#ffffff22" : "#31313155",
               borderTopRightRadius : "20px",
               borderBottomRightRadius : "20px",
               marginBottom : 10,
@@ -62,8 +51,8 @@ export default function Contact() {
             }}
           > 
             <div>
-            <ArrowDropUpIcon fontSize="small"/>          
-            <ArrowDropDownIcon fontSize="small"/>
+            <ArrowDropUpIcon fontSize="small" style={{color : theme.palette.error.main}}/>          
+            <ArrowDropDownIcon fontSize="small" style={{color : theme.palette.error.main}}/>
             </div>  
             <Fab size="small" color="secondary">
               <EmailIcon />
