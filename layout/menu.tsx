@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -7,7 +9,9 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import {styled} from "@mui/system";
 
+import HomeIcon from '@mui/icons-material/Home';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import WorkIcon from '@mui/icons-material/Work';
 import BuildIcon from '@mui/icons-material/Build';
@@ -19,6 +23,14 @@ interface MenuDrawerProps {
   toggleDrawer : (open : boolean) => void;
 }
 
+const StyledLink = styled(Link)(({theme}) => ({
+  display : "flex",
+  flexDirection : "row",
+  rowGap : 2,
+  justifyContent : "left",
+  alignItems : "center",
+  width : "100%"
+}))
 
 export default function MenuDrawer(props : MenuDrawerProps) {
   const list = () => (
@@ -30,46 +42,67 @@ export default function MenuDrawer(props : MenuDrawerProps) {
     >
       <List>
         <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <MenuBookIcon />
-            </ListItemIcon>
-            <ListItemText primary="Education"/>
-          </ListItemButton>
+          <StyledLink href="/">
+            <ListItemButton>
+                <ListItemIcon>
+                  <HomeIcon />
+                </ListItemIcon>
+                <ListItemText primary="Home"/>
+            </ListItemButton>
+          </StyledLink>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <WorkIcon />
-            </ListItemIcon>
-            <ListItemText primary="Experience"/>
-          </ListItemButton>
+          <StyledLink href="/education">
+            <ListItemButton>
+                <ListItemIcon>
+                  <MenuBookIcon />
+                </ListItemIcon>
+                <ListItemText primary="Education"/>
+            </ListItemButton>
+          </StyledLink>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <BuildIcon />
-            </ListItemIcon>
-            <ListItemText primary="Skills"/>
-          </ListItemButton>
-        </ListItem>        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <AccountTreeIcon />
-            </ListItemIcon>
-            <ListItemText primary="Projects"/>
-          </ListItemButton>
+          <StyledLink href="/experience">
+            <ListItemButton>
+                <ListItemIcon>
+                  <WorkIcon />
+                </ListItemIcon>
+                <ListItemText primary="Experience"/>
+            </ListItemButton>
+          </StyledLink>
+        </ListItem>
+        <ListItem disablePadding>
+          <StyledLink href="/skills">
+            <ListItemButton>
+                <ListItemIcon>
+                  <BuildIcon />
+                </ListItemIcon>
+                <ListItemText primary="Skills"/>
+            </ListItemButton>
+          </StyledLink>
+        </ListItem>        
+        <ListItem disablePadding>
+          <StyledLink href="/projects">
+            <ListItemButton>
+                <ListItemIcon>
+                  <AccountTreeIcon />
+                </ListItemIcon>
+                <ListItemText primary="Projects"/>
+            </ListItemButton>
+          </StyledLink>
         </ListItem>
       </List>
       <Divider />
       <List>
           <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <ContactSupportIcon />
-              </ListItemIcon>
-              <ListItemText primary="Contact Me" />
-            </ListItemButton>
+            <StyledLink href="/contact">
+              <ListItemButton>
+                  <ListItemIcon>
+                    <ContactSupportIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Contact Me" />
+              </ListItemButton>
+            </StyledLink>
           </ListItem>
       </List>
     </Box>

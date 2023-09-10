@@ -1,7 +1,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Head from "next/head";
-
+import Link from "next/link";
 
 import {
   Container,
@@ -183,24 +183,44 @@ function HomePage() {
           <Typography variant="body2" textAlign="center"  
             style={{ color : theme.palette.mode === "dark" ? "#dfdfdfff" : "#313131aa", marginBottom : 5}}
           >
-            Helpful Links:
+            Explore Further:
           </Typography>
 
           <StyledButtonGroup variant="text" size="small">
             <Button>
-              Education
+              <Link
+                href="/education"
+              >
+                Education
+              </Link>
             </Button>
             <Button>
-              Experience
+              <Link
+                href="/experience"
+              >
+                Experience
+              </Link>
             </Button>
             <Button>
-              Skills
+              <Link
+                href="/skills"
+              >
+                Skills
+              </Link>
             </Button>
             <Button>
-              Projects
+              <Link
+                href="/projects"
+              >
+                Projects
+              </Link>
             </Button>
             <Button>
-              Contact
+              <Link
+                href="/contact"
+              >
+                Contact              
+              </Link>
             </Button>
           </StyledButtonGroup>
         </Grid>

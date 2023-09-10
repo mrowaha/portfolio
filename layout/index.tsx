@@ -143,7 +143,9 @@ export function Layout(props : any) {
       </AppBar>
 
       <AppContainer>
-        {props.children}
+        <div style={{minHeight : "100vh"}}>
+          {props.children}
+        </div>
         <Footer>
           <Typography 
             variant="body2"
