@@ -15,6 +15,7 @@ import {
   ButtonGroup
 } from "@mui/material";
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import {styled} from "@mui/system";
 
 const BannerDiv = styled("div")(({theme}) => ({
@@ -170,14 +171,26 @@ function HomePage() {
           />
           <Typography variant="h5" textAlign="center" style={{ color : theme.palette.mode === "dark" ? "#dfdfdfff" : "#313131aa"}} >
             I am an enthusiastic B.Sc Computer Engineering Student with strong academic, co-curricular achievements and industrial experience. 
+          </Typography>
+          <Typography variant="h5" textAlign="center" style={{color : theme.palette.primary.main}}>
+            My Resume
+            <br/>
             <Button
-              variant="text"
+              size="small"
               startIcon={<FileDownloadIcon />}
               href="/mrowaha_resume.pdf"
               download="Muhammad_Rowaha_Resume"
             >
-              View My Resume
+              Download
             </Button>
+            <Link href="/resume">
+              <Button
+                size="small"
+                startIcon={<VisibilityIcon />}
+              >
+                View
+              </Button>
+            </Link>
           </Typography>
           <Divider style={{margin : "1rem 0"}} />
           <Typography variant="body2" textAlign="center"  
