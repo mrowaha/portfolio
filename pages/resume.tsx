@@ -5,10 +5,19 @@ import { zoomPlugin } from '@react-pdf-viewer/zoom';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/zoom/lib/styles/index.css';
 import { useTheme } from '@mui/material';
+import { useAtom } from "jotai";
+
+import { titleAtom } from "@/store";
 
 
 function ResumePage() {
   const theme = useTheme();
+  const [pageTitle, setPageTitle] = useAtom(titleAtom);
+
+  React.useEffect(() => {
+    setPageTitle("Resume")
+  }, [])
+  
   const zoomPluginInstance = zoomPlugin();
   const { ZoomInButton, ZoomOutButton, ZoomPopover } = zoomPluginInstance;
 

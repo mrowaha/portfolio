@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+
 import * as React from "react";
 import { 
   Typography,
@@ -9,9 +10,11 @@ import {
 } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import { styled } from '@mui/system';
-import { ThemeManagerContext } from "@/theme";
+import { useAtom } from "jotai";
 
+import { ThemeManagerContext } from "@/theme";
 import MenuDrawer from "./menu";
+import { titleAtom } from "@/store";
 
 const DynamicContact = dynamic(
   () => import("./contact"),
@@ -110,6 +113,7 @@ export function Layout(props : any) {
   const theme = useTheme();
   const themeCtxManager = React.useContext(ThemeManagerContext);
   const [menuDrawer, setMenuDrawer] = React.useState<boolean>(false);
+  const [title, _] = useAtom(titleAtom);
 
   return (
     <>
@@ -133,7 +137,7 @@ export function Layout(props : any) {
             <Title
               variant="h4"
             >
-              Home 
+              {title} 
             </Title>
           <ThemeSwitch
             defaultChecked

@@ -18,6 +18,12 @@ import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import {styled} from "@mui/system";
 
+import { useAtom } from "jotai";
+
+
+import { titleAtom } from "@/store";
+
+
 const BannerDiv = styled("div")(({theme}) => ({
   width : "100%",
   height : "55vh",
@@ -90,6 +96,7 @@ const letters = ["P", "o", "r", "t", "f", "o","l","i","o", ""]
 function HomePage() {
 
   const theme = useTheme();
+  const [pageTitle, setPageTitle] = useAtom(titleAtom);
   const [authorImgLoaded, setAuthorImageLoaded] = React.useState<boolean>(false);
   const [titleLetters, setTitleLetters] = React.useState<number>(-1);
   let title = "";
@@ -98,12 +105,17 @@ function HomePage() {
   }
 
   React.useEffect(() => {
+    setPageTitle("Home")
+  }, [])
+
+  React.useEffect(() => {
     if (titleLetters === letters.length-1) return;
     setTimeout(() => {
       if (titleLetters === letters.length) return;
       setTitleLetters(prev => (prev+1) % letters.length)
     }, 250)
   }, [titleLetters])
+
 
 
 
