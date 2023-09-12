@@ -159,7 +159,7 @@ function ContactPage(props : ContactPageProps) {
         <Typography variant="body1" color="secondary">
           or leave a message
         </Typography>
-        <Container id="email" style={{padding : "0 10rem", display : "flex", flexDirection : "column", gap : 20}}> 
+        <Container id="email" sx={{padding : {lg : "0 10rem"}, display : "flex", flexDirection : "column", gap : 2}}> 
             <TextField 
               placeholder="Title"
               fullWidth
