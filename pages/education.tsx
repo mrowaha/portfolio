@@ -51,7 +51,6 @@ function EducationPage(props : Education[]) {
           {
             React.Children.toArray(
               Object.entries(props).map(([key, value]) => {
-                console.log(value);
                 return (
                   <Grid item xs={12} md={5}>
                     <StyledCard>
@@ -61,10 +60,11 @@ function EducationPage(props : Education[]) {
                           alt="education logo"
                           width={140}
                           height={140}
+                          style={{border : `3px solid ${theme.palette.secondary.main}`}}
                         />               
                       </div>
                       <CardContent>
-                        <Typography gutterBottom variant="h5" component="div" style={{color : theme.palette.mode === 'dark' ? "#dfdfdfff" : "#313131aa"}} textAlign="center">
+                        <Typography gutterBottom variant="h5" component="div" color="primary" textAlign="center">
                           {value.level}
                         </Typography>
                         <Typography style={{color : theme.palette.mode === 'dark' ? "#dfdfdfff" : "#313131aa"}} >
