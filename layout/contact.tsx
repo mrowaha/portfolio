@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import { 
   Fab,
   Badge,
+  Tooltip,
   useTheme
 } from "@mui/material";
 import EmailIcon from '@mui/icons-material/Email';
@@ -53,10 +54,17 @@ export default function Contact() {
             <div>
             <ArrowDropUpIcon fontSize="small" style={{color : theme.palette.error.main}}/>          
             <ArrowDropDownIcon fontSize="small" style={{color : theme.palette.error.main}}/>
-            </div>  
-            <Fab size="small" color="secondary">
-              <EmailIcon />
-            </Fab>
+            </div>
+            <Tooltip
+              title="Leave a message"
+              placement="top"
+            >
+              <Link href="/contact#email">
+                <Fab size="small" color="secondary">
+                  <EmailIcon />
+                </Fab>
+              </Link>
+            </Tooltip>     
             <Link href="https://github.com/mrowaha">
                 <Fab size="small" color="secondary">
                   <Badge badgeContent={<LaunchIcon color="primary" fontSize="small"/>}>
