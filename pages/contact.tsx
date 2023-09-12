@@ -1,6 +1,7 @@
 import Head from "next/head";
 
 import * as React from "react";
+import { flushSync } from "react-dom";
 import { useAtom } from "jotai";
 
 import {
@@ -47,6 +48,7 @@ function ContactPage(props : ContactPageProps) {
 
   const [emailTitle, setEmailTitle] = React.useState<string>("");
   const [senderEmail, setSenderEmail] = React.useState<string>("");
+  const [sendingEmail, setSendingEmail] = React.useState<boolean>(false);
   const [emailError, setEmailError] = React.useState<boolean>(false);
   const [emailContent, setEmailContent] = React.useState<string>("");
   const [emailSnack, setEmailSnack] = React.useState<boolean>(false);
@@ -55,7 +57,9 @@ function ContactPage(props : ContactPageProps) {
 
   const handleSendEmail = () => {
     let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-
+    
+    flushSync(() => setSendingEmail(true))
+    
     if (senderEmail.match(regex)) {
       setEmailError(false);
       fetch("/api/email", {
@@ -80,11 +84,13 @@ function ContactPage(props : ContactPageProps) {
         }
       })
       .catch(err => console.log("error"))
+      .finally(() => setSendingEmail(false))
     } else {
       setEmailSnackSeverity("error");
       setEmailSnack(true);
       setEmailSnackMessage("Email Format Incorrect");
       setEmailError(true);
+      setSendingEmail(false);
     }
   }
 
@@ -187,7 +193,7 @@ function ContactPage(props : ContactPageProps) {
           startIcon={<SendIcon />}
           size="small"
           onClick={handleSendEmail}
-          disabled={senderEmail === "" || emailContent === "" || emailTitle === ""}
+          disabled={senderEmail === "" || emailContent === "" || emailTitle === "" || sendingEmail}
         >
           Send Message
         </Button>
