@@ -204,13 +204,14 @@ function ContactPage(props : ContactPageProps) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   
   const res = await fetch("https://mrowaha-portfolio-default-rtdb.firebaseio.com/contact.json");
   const contactData = await res.json(); 
 
   return {
-    props : {...contactData}
+    props : {...contactData},
+    revalidate : 60 * 60 * 24
   }
 }
 

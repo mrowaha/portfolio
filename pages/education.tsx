@@ -89,13 +89,14 @@ function EducationPage(props : Education[]) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch("https://mrowaha-portfolio-default-rtdb.firebaseio.com/education.json");
   const data = await res.json();
 
   const arr = Object.entries(data).map(([key, value]) => value)
   return {
-    props : {...arr}
+    props : {...arr},
+    revalidate : 60 * 60 * 24
   }
 }
 
