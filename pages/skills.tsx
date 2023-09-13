@@ -20,7 +20,9 @@ const StyledCard = styled(Card)(({theme}) => ({
   background : theme.palette.mode === "dark" ? "linear-gradient(#313131ff, #31313144)" : "linear-gradient(#dfdfdf80, #dfdfdfff)",
   border : theme.palette.mode === "dark" ? "2px solid #ffffff20" : "2px solid #dfdfdfff", 
   padding : "1rem",
-  alignItems : "center"
+  alignItems : "center",
+  height : 350,
+  overflowY : "scroll"
 }))
 
 
@@ -55,11 +57,13 @@ function SkillsPage(props : Skill[]) {
                         <Typography gutterBottom variant="h5" component="div" color="primary" textAlign="center">
                           {value.type}
                         </Typography>
-                        {
-                          React.Children.toArray(
-                            value.stack.map(tool => <Chip label={tool} color="error" variant="outlined" />)
-                          )
-                        }
+                        <div style={{display : "flex", flexDirection : "column", alignItems : "center", gap : 5}}>
+                          {
+                            React.Children.toArray(
+                              value.stack.map(tool => <Chip label={tool} color="error" variant="outlined"  />)
+                            )
+                          }
+                        </div>
                       </CardContent>
                     </StyledCard>
                   </Grid>
