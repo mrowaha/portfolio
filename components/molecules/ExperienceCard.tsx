@@ -9,7 +9,8 @@ import {
   Accordion,
   List,
   ListItem,
-  ListItemText
+  ListItemText,
+  Box
 } from "@mui/material";
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -40,18 +41,28 @@ export default function ExperienceCard(props: ExperienceCardProps) {
   const theme = useTheme();
 
   return (
-    <StyledCard direction={"row"} gap={5}>
-      <div>
+    <StyledCard direction={{ sm: 'column', md: 'row' }} gap={2} divider={<Divider orientation="vertical" flexItem />}>
+      <Box sx={{
+        display: {xs : "flex", md: "block"}, 
+        justifyContent: {xs: "center"}, 
+        width: {xs: "100%", md: "auto"}
+      }}>
         <Image 
           src={`/experience/${props.img}.png`}
           alt="experience logo"
           width={140}
           height={140}
-          style={{border : `3px solid ${theme.palette.secondary.main}`, borderRadius: "10px"}}
+          style={{border : `3px solid ${theme.palette.secondary.main}`, borderRadius: "10px", margin: "0 auto"}}
         />               
-      </div>
-      <Divider orientation="vertical" />
-      <div style={{flexGrow: 1}}>
+      </Box>
+      <Box sx={{
+        flexGrow: 1,
+        display: {xs : "flex", md: "block"}, 
+        justifyContent: {xs: "center"},
+        alignItems: {xs: "center"},
+        flexDirection: {xs: "column"}, 
+        width: {xs: "100%", md: "auto"}
+      }}>
         <Typography gutterBottom variant="h5" color="primary" textAlign="center" sx={{width: "fit-content"}}>
           {props.role}
         </Typography>
@@ -82,7 +93,7 @@ export default function ExperienceCard(props: ExperienceCardProps) {
             </List>
           </AccordionDetails>
         </Accordion>
-      </div>
+      </Box>
     </StyledCard>
   )
 }

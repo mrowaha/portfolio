@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 
 import * as React from "react";
 import { 
+  Container,
   Typography,
   useTheme
 } from "@mui/material";
@@ -46,9 +47,9 @@ export function Layout(props : any) {
         title={title}
       />
       <AppContainer>
-        <div style={{minHeight : "100vh", marginBottom : "1rem"}}>
+        <Container sx={{ marginBottom : "1rem"}}>
           {props.children}
-        </div>
+        </Container>
         <Footer>
           <Typography 
             variant="body2"

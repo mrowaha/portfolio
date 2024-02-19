@@ -42,7 +42,7 @@ export default function PortfolioMenu(props: PortfolioMenuProps) {
         open={open}
         onClose={props.onClose}
       >
-        {menuItems}
+        {React.Children.toArray(menuItems)}
       </Menu>    
   )
 }

@@ -11,6 +11,7 @@ import {
 
 import { titleAtom } from "@/store";
 import ExperienceCard, {ExperienceCardProps} from "@/components/molecules/ExperienceCard";
+import Title from "@/components/atoms/Title";
 
 const experiences : ExperienceCardProps[] = [
   {
@@ -56,7 +57,11 @@ function ExperiencePage () {
   const [pageTitle, setPageTitle] = useAtom(titleAtom);
 
   const experienceCards = React.useMemo(() => {
-    return experiences.map((itemProps) => <ExperienceCard {...itemProps} key={0} />)
+    return experiences.map((itemProps) => 
+      <Grid item xs={12}>
+        <ExperienceCard {...itemProps} key={0} />
+      </Grid>
+    )
   }, []);
 
   React.useEffect(() => {
@@ -69,11 +74,12 @@ function ExperiencePage () {
         <title>Muhammad Rowaha | Experience</title>
       </Head>
 
-      <Container >
+        <Title 
+          title="Experience"
+        />
         <Grid container gap={2} justifyContent="center">
-          {experienceCards }
+          {React.Children.toArray(experienceCards)}
         </Grid>
-      </Container>
     </>
   )
 }
