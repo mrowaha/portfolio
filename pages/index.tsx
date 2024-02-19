@@ -19,29 +19,30 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import {styled} from "@mui/system";
 
 import { useAtom } from "jotai";
-
-
 import { titleAtom } from "@/store";
 
+import EmailIcon from '@mui/icons-material/Email';
+import { Github, Instagram, LinkedIn } from "@/util/icons";
 
 const BannerDiv = styled("div")(({theme}) => ({
   width : "100%",
   height : "55vh",
   minHeight : "400px",
-  background : theme.palette.mode === "dark" ? "linear-gradient(#313131ff, #31313144)" : "linear-gradient(#dfdfdf80, #dfdfdfff)",
-  border : theme.palette.mode === "dark" ? "2px solid #ffffff20" : "2px solid #dfdfdfff",
+  background : `linear-gradient(45deg, ${theme.palette.secondary.main}, ${theme.palette.primary.main})`,
+  border : "5px solid black",
   position : "relative",
   display : "flex",
   justifyContent : "center",
   paddingTop : "2rem"
 }))
 
-const ContentContainer = styled(Grid)(({theme}) => ({
-  gap : 275,
-  paddingBottom : "5rem",
+const BannerTitle = styled(Typography)(({theme}) => ({
+  fontFamily : "Caveat  ",
   [theme.breakpoints.down("sm")] : {
-    gap : 250
-  }
+    fontSize : "20vw"
+  },
+  letterSpacing : 5,
+  color : "#fff"
 }))
 
 const ImageContainer = styled(Box)(({theme}) => ({
@@ -60,13 +61,23 @@ const ImageContainer = styled(Box)(({theme}) => ({
   left : "50%",
   transform : "translate(-50%, -50%)",
   background : theme.palette.mode === "dark" ? "#313131ff" : "white",
-  border : theme.palette.mode === "dark" ? "6px solid #dfdfdfff" : "6px solid #313131aa",
+  border : "5px solid black",
   zIndex : 10,
   display : "flex",
   justifyContent : "center",
   alignItems : "center"
 
 }))
+
+
+const ContentContainerGrid = styled(Grid)(({theme}) => ({
+  gap : 275,
+  paddingBottom : "5rem",
+  [theme.breakpoints.down("sm")] : {
+    gap : 250
+  }
+}))
+
 
 const StyledImage = styled(Image)(({theme}) => ({
   borderRadius : "50%",
@@ -75,14 +86,6 @@ const StyledImage = styled(Image)(({theme}) => ({
   objectFit : "cover"
 }))
 
-const BannerTitle = styled(Typography)(({theme}) => ({
-  fontFamily : "Caveat",
-  [theme.breakpoints.down("sm")] : {
-    fontSize : "20vw"
-  },
-  letterSpacing : 5,
-  color : theme.palette.mode === "dark" ? "#dfdfdfff" : "#313131aa"
-}))
 
 const StyledButtonGroup = styled(ButtonGroup)(({theme}) => ({
   display : "flex",
@@ -90,34 +93,16 @@ const StyledButtonGroup = styled(ButtonGroup)(({theme}) => ({
   flexWrap : "wrap"
 }))
 
-const letters = ["P", "o", "r", "t", "f", "o","l","i","o", ""]
-
 
 function HomePage() {
 
   const theme = useTheme();
   const [pageTitle, setPageTitle] = useAtom(titleAtom);
   const [authorImgLoaded, setAuthorImageLoaded] = React.useState<boolean>(false);
-  const [titleLetters, setTitleLetters] = React.useState<number>(-1);
-  let title = "";
-  for (let i = 0; i < titleLetters; i++) {
-    title += letters[i];
-  }
 
   React.useEffect(() => {
     setPageTitle("Home")
   }, [])
-
-  React.useEffect(() => {
-    if (titleLetters === letters.length-1) return;
-    setTimeout(() => {
-      if (titleLetters === letters.length) return;
-      setTitleLetters(prev => (prev+1) % letters.length)
-    }, 250)
-  }, [titleLetters])
-
-
-
 
   return (
     <>
@@ -126,7 +111,7 @@ function HomePage() {
     </Head> 
 
     <Container>
-      <ContentContainer container>
+      <ContentContainerGrid container>
         <Grid item xs={24}>
           <BannerDiv>
             <ImageContainer>
@@ -151,7 +136,7 @@ function HomePage() {
               }
             </ImageContainer>
             <BannerTitle variant="h1">
-              {title}
+              Portfolio
             </BannerTitle>
           </BannerDiv>
         </Grid>
@@ -165,24 +150,14 @@ function HomePage() {
               },
               textAlign : "center"
             }}
-            style={{ color : theme.palette.mode === "dark" ? "#dfdfdfff" : "#313131aa"}}
+            style={{ color : "#313131aa"}}
           >
             Hi, I am
-            <span style={{color : theme.palette.secondary.main}}> Muhammad Rowaha,</span>
+            <span style={{color : theme.palette.secondary.main}}> Muhammad Rowaha</span>
           </Typography>
-          <Typography
-            variant="h2"
-            textAlign="center"
-            style={{ color : theme.palette.mode === "dark" ? "#dfdfdfff" : "#313131aa"}}
-          >
-            an expert in
-          </Typography>
-          <LoopTitles 
-            delay={1500}
-            titles={["Software Engineering", "Computer Science", "Full Stack Development"]}
-          />
-          <Typography variant="h5" textAlign="center" style={{ color : theme.palette.mode === "dark" ? "#dfdfdfff" : "#313131aa"}} >
-            I am an enthusiastic B.Sc Computer Engineering Student with strong academic, co-curricular achievements and industrial experience. 
+          <Typography variant="h5" textAlign="center" style={{ color : "#313131aa"}} >
+            An enthusiastic full-stack software engineer developing
+            solutions for improved efficiency
           </Typography>
           <Typography variant="h5" textAlign="center" style={{color : theme.palette.primary.main}}>
             My Resume
@@ -204,6 +179,45 @@ function HomePage() {
               </Button>
             </Link>
           </Typography>
+          {/* Contact Links */}
+          <Divider style={{margin : "1rem 0"}} />
+          <Typography variant="body2" textAlign="center"  
+            style={{ color : theme.palette.mode === "dark" ? "#dfdfdfff" : "#313131aa", marginBottom : 5}}
+          >
+            Contact Me:
+          </Typography>
+          
+          <StyledButtonGroup variant="text" size="small"> 
+            <Button
+              href="mailto:ashfaqrowaha@gmail.com"
+              sx={{textTransform: "none"}}
+              startIcon={<EmailIcon />}
+            >
+              ashfaqrowaha@gmail.com
+            </Button>
+            <Button
+              href="https://www.linkedin.com/in/mrowaha"
+              sx={{textTransform: "none"}}
+              startIcon={<LinkedIn fill={theme.palette.primary.main} />}
+            >
+              www.linkedin.com/in/mrowaha
+            </Button>
+            <Button
+              href="https://www.github.com/mrowaha"
+              sx={{textTransform: "none"}}
+              startIcon={<Github fill={theme.palette.primary.main} />}
+            >
+              www.github.com/mrowaha
+            </Button>
+            <Button
+              href="https://www.instagram.com/mrowaha/"
+              sx={{textTransform: "none"}}
+              startIcon={<Instagram fill={theme.palette.primary.main} />}
+            >
+              www.instagram.com/mrowaha
+            </Button>
+          </StyledButtonGroup>
+
           <Divider style={{margin : "1rem 0"}} />
           <Typography variant="body2" textAlign="center"  
             style={{ color : theme.palette.mode === "dark" ? "#dfdfdfff" : "#313131aa", marginBottom : 5}}
@@ -228,28 +242,14 @@ function HomePage() {
             </Button>
             <Button>
               <Link
-                href="/skills"
-              >
-                Skills
-              </Link>
-            </Button>
-            <Button>
-              <Link
                 href="/projects"
               >
                 Projects
               </Link>
             </Button>
-            <Button>
-              <Link
-                href="/contact"
-              >
-                Contact              
-              </Link>
-            </Button>
           </StyledButtonGroup>
         </Grid>
-      </ContentContainer>
+      </ContentContainerGrid>
     </Container>
     </>
     
