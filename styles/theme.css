@@ -1,0 +1,37 @@
+.gradient-text {
+  background: linear-gradient(90deg, #690169 0%, #d6023b 25%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-small {
+  background: linear-gradient(90deg, #690169, #d6023b);
+  -webkit-background-clip: text;
+  color: transparent;
+
+}
+
+.gradient-border {
+  border: double 5px transparent;
+  background-image: linear-gradient(white, white), 
+                    linear-gradient(90deg, #690169 0%, #d6023b 25%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+background: #F2F0FC;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #690169 0%, #d6023b 25%);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+background: #DAD1FF;
+}

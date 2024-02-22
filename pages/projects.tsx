@@ -32,7 +32,7 @@ interface Project {
 }
 
 function ProjectsPage(props : Project[]) {
-
+  console.log(props);
   const theme = useTheme();
   const [pageTitle, setPageTitle] = useAtom(titleAtom);
 
