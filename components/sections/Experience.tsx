@@ -4,14 +4,17 @@ import * as React from "react";
 import { useAtom } from "jotai";
 
 import {
+  Chip,
   Container,
   Grid,
+  Stack,
   useTheme
 } from "@mui/material";
 
 import { titleAtom } from "@/store";
 import ExperienceCard, {ExperienceCardProps} from "@/components/molecules/ExperienceCard";
 import Title from "@/components/atoms/Title";
+import Section from "@/components/molecules/Section";
 
 const experiences : ExperienceCardProps[] = [
   {
@@ -54,7 +57,9 @@ const experiences : ExperienceCardProps[] = [
 
 function ExperiencePage () {
 
+  const sectionRef = React.useRef();
   const [pageTitle, setPageTitle] = useAtom(titleAtom);
+  const theme = useTheme();
 
   const experienceCards = React.useMemo(() => {
     return experiences.map((itemProps) => 
@@ -65,21 +70,29 @@ function ExperiencePage () {
   }, []);
 
   React.useEffect(() => {
-    setPageTitle("Experience")
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (entry.isIntersecting) {
+        setPageTitle("Portfolio");
+      }
+    });
+    observer.observe(sectionRef.current!);
+    return () => {
+      observer.unobserve(sectionRef.current!);
+    }
   }, [])
   
   return (
     <>
-      <Head>
-        <title>Muhammad Rowaha | Experience</title>
-      </Head>
-
-        <Title 
-          title="Experience"
-        />
+      <Section
+        id="experience"
+        title="Experience"
+        ref={sectionRef}
+      >
         <Grid container gap={2} justifyContent="center">
           {React.Children.toArray(experienceCards)}
         </Grid>
+      </Section>
     </>
   )
 }

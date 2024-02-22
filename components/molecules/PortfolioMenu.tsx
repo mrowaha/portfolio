@@ -17,15 +17,15 @@ const menus : MenuItemProps[] = [
   },
   {
     title: "Experience",
-    href: "/experience"
+    href: "#experience"
   },
   {
     title: "Education",
-    href: "/education"
+    href: "#education"
   },
   {
     title: "Projects",
-    href: "/projects"
+    href: "#projects"
   }
 ]
 

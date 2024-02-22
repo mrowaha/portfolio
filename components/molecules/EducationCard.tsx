@@ -28,16 +28,16 @@ const StyledCard = styled(Stack)(({theme}) => ({
   alignItems: "flex-start"
 }))
 
-export interface ExperienceCardProps {
-  img: number;
-  role: string;
-  company: string;
+export interface EducationCardProps {
+  level : string;
+  highlights : string;
+  coursework : string;
+  from : string; 
   date: string;
-  work: string[];
+  idx: number;
 }
 
-
-export default function ExperienceCard(props: ExperienceCardProps) {
+export default function EducationCard(props: EducationCardProps) {
   
   const theme = useTheme();
 
@@ -50,8 +50,8 @@ export default function ExperienceCard(props: ExperienceCardProps) {
       }}>
         <Box sx={{width: {xs: "70%", md: 140}, aspectRatio: {xs: "16 / 9", md: "1 / 1"}}}>
           <DomainImage 
-            src={`/experience/${props.img}.png`}
-            alt='experience logo'
+            src={`/education/${props.idx}.png`}
+            alt='education logo'
           />
         </Box>  
       </Box>
@@ -64,33 +64,36 @@ export default function ExperienceCard(props: ExperienceCardProps) {
         width: {xs: "100%", md: "auto"}
       }}>
         <Typography gutterBottom variant="h5" color="primary" textAlign="center" sx={{width: "fit-content"}}>
-          {props.role}
+          {props.level}
         </Typography>
         <Typography style={{color : theme.palette.secondary.main, textTransform: "uppercase", fontWeight: "bold"}} >
-          {props.company}
+          {props.from}
         </Typography>
         <Typography style={{color : theme.palette.mode === 'dark' ? "#dfdfdfff" : "#313131aa"}} >
           {props.date}
         </Typography>
+        <Accordion sx={{background: "linear-gradient(90deg, #690169, #d6023b)"}}>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon style={{fill: "#fff"}}/>}
+          >
+          <Typography variant="h6" sx={{color: "#fff"}}>Coursework</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography variant="body1" color="#fff">
+              {props.coursework}
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
         <Accordion sx={{background: "linear-gradient(90deg, #690169, #d6023b)", width: "100%"}}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon style={{fill: "#fff"}}/>}
           >
-          <Typography variant="h6" sx={{color: "#fff"}}>Details</Typography>
+          <Typography variant="h6" sx={{color: "#fff"}}>Highlights</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <List>
-              {
-                React.Children.toArray(
-                  props.work.map(work => 
-                  <ListItem>
-                    <ListItemText 
-                      primary={<Typography color="#fff">{work}</Typography>}
-                    />
-                  </ListItem>)
-                )
-              }
-            </List>
+            <Typography variant="body1" color="#fff">
+              {props.highlights}
+            </Typography>
           </AccordionDetails>
         </Accordion>
       </Box>

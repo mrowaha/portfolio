@@ -17,10 +17,9 @@ export interface NavbarProps {
   title: string;
 }
 
-function Navbar(props : NavbarProps) {
+function Navbar(props : NavbarProps, appBarRef : any) {
 
   const theme = useTheme();
-  const appBarRef = React.useRef<React.ElementRef<"header"> | null>(null);
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
   const handleClick = (e : React.MouseEvent<HTMLButtonElement>) => setAnchorEl(e.currentTarget);
   const handleClose = () => setAnchorEl(null);
