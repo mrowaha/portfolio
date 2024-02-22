@@ -62,8 +62,8 @@ function ExperiencePage () {
   const theme = useTheme();
 
   const experienceCards = React.useMemo(() => {
-    return experiences.map((itemProps) => 
-      <Grid item xs={12}>
+    return experiences.map((itemProps ,key) => 
+      <Grid item xs={12} key={key}>
         <ExperienceCard {...itemProps} key={0} />
       </Grid>
     )

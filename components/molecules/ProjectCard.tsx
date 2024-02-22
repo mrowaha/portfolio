@@ -16,6 +16,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {styled} from "@mui/system";
 import { DomainImage } from "./DomainImage";
 import LaunchIcon from '@mui/icons-material/Launch';
+import { idText } from "typescript";
 const StyledCard = styled(Stack)(({theme}) => ({
   background : "linear-gradient(#dfdfdf80, #dfdfdfff)",
   border :"2px solid #dfdfdfff", 
@@ -63,8 +64,8 @@ export default function ProjectCard(props: ProjectCardProps) {
           {props.name}
         </Typography>
         {
-          props.link.map(({name, href}) => (
-            <span style={{marginRight: "0.75rem"}}>
+          props.link.map(({name, href}, idx) => (
+            <span style={{marginRight: "0.75rem"}} key={idx}>
               <Link
                 href={href}
               >

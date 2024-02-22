@@ -33,7 +33,7 @@ export default function PortfolioMenu(props: PortfolioMenuProps) {
 
   const open = Boolean(props.anchorEl);
   const menuItems = React.useMemo(() => {
-    return menus.map((itemProps) => <PortfolioMenuItem onClick={props.onClose} {...itemProps} />)
+    return menus.map((itemProps, idx) => <PortfolioMenuItem key={idx} onClick={props.onClose} {...itemProps} />)
   }, []);
 
   return (
