@@ -109,23 +109,7 @@ function ProjectsPage() {
   const theme = useTheme();
   const [pageTitle, setPageTitle] = useAtom(titleAtom);
 
-  React.useEffect(() => {
-    setPageTitle("Projects")
-  }, [])
-
   const sectionRef = React.useRef();
-  React.useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      if (entry.isIntersecting) {
-        setPageTitle("Portfolio");
-      }
-    });
-    observer.observe(sectionRef.current!);
-    return () => {
-      observer.unobserve(sectionRef.current!);
-    }
-  }, [])
 
   return (
     <Section

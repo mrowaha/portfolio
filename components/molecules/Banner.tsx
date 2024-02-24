@@ -69,17 +69,8 @@ export default function Banner({onResize}: {onResize: (height: number) => void})
 
   const containerRef = useRef();
   const bannerRef = useRef();
-  const [pageTitle, setPageTitle] = useAtom(titleAtom);
 
   useEffect(() => {
-    const intersectionObserver = new IntersectionObserver(entries => {
-      const entry = entries[0];
-      if (entry.isIntersecting) {
-        setPageTitle("Portfolio");
-      }
-    })
-    intersectionObserver.observe(bannerRef.current!);
-
     const observer = new ResizeObserver((entries) => {
       for (const entry of entries) {
         onResize(entry.contentRect.height);
@@ -87,8 +78,9 @@ export default function Banner({onResize}: {onResize: (height: number) => void})
     })
     observer.observe(containerRef.current!);
     return () => {
-      observer.unobserve(containerRef.current!);
-      intersectionObserver.unobserve(bannerRef.current!);
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current!);
+      }
     }
   }, [])
 

@@ -16,7 +16,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {styled} from "@mui/system";
 import { DomainImage } from "./DomainImage";
 import LaunchIcon from '@mui/icons-material/Launch';
-import { idText } from "typescript";
+
 const StyledCard = styled(Stack)(({theme}) => ({
   background : "linear-gradient(#dfdfdf80, #dfdfdfff)",
   border :"2px solid #dfdfdfff", 
@@ -63,6 +63,10 @@ export default function ProjectCard(props: ProjectCardProps) {
         <Typography gutterBottom variant="h5" color="primary" textAlign="center" sx={{width: "fit-content"}}>
           {props.name}
         </Typography>
+        <Typography gutterBottom variant="body2" color="secondary" textAlign="center" sx={{width: "fit-content", fontWeight: "bold", marginRight: "0.75rem"}} component="span">
+          Links:
+        </Typography>
+        
         {
           props.link.map(({name, href}, idx) => (
             <span style={{marginRight: "0.75rem"}} key={idx}>
@@ -70,9 +74,9 @@ export default function ProjectCard(props: ProjectCardProps) {
                 href={href}
               >
                 <Badge
-                  badgeContent={<LaunchIcon fontSize="small"/>}
+                  badgeContent={<LaunchIcon style={{fontSize: "1em", fill: theme.palette.secondary.main}}/>}
                 >
-                  <Typography>{name}</Typography>
+                  <Typography color="secondary" variant="body2" sx={{textDecoration: "underline"}}>{name}</Typography>
                 </Badge>
               </Link>
             </span>

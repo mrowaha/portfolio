@@ -57,10 +57,9 @@ const experiences : ExperienceCardProps[] = [
 
 function ExperiencePage () {
 
-  const sectionRef = React.useRef();
-  const [pageTitle, setPageTitle] = useAtom(titleAtom);
   const theme = useTheme();
-
+  const sectionRef = React.useRef();
+  
   const experienceCards = React.useMemo(() => {
     return experiences.map((itemProps ,key) => 
       <Grid item xs={12} key={key}>
@@ -69,19 +68,6 @@ function ExperiencePage () {
     )
   }, []);
 
-  React.useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      if (entry.isIntersecting) {
-        setPageTitle("Portfolio");
-      }
-    });
-    observer.observe(sectionRef.current!);
-    return () => {
-      observer.unobserve(sectionRef.current!);
-    }
-  }, [])
-  
   return (
     <>
       <Section
